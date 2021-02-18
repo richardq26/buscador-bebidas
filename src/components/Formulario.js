@@ -15,13 +15,16 @@ export const Formulario = () => {
   const { categorias } = useContext(CategoriasContext);
 
   // trayendo las funciones de RecetasContext
-  const {buscarRecetas} = useContext(RecetasContext)
+  const {buscarRecetas, guardarConsultar} = useContext(RecetasContext)
 
 
   // Función para buscar receta en el formulario 
   const handleSubmit= (e)=>{
     e.preventDefault();
+    // Estos de RecetasContext
+    guardarConsultar(true);
     buscarRecetas(formValues);
+    reset();
   }
   return (
     <form className="col-md-12" onSubmit={handleSubmit}>
